@@ -1,55 +1,64 @@
 import axios from "axios";
 import qs from "qs";
-import {
-  AddToCart,
-  UpdateOrderPaid,
-} from "../types/index";
+import { AddToCart, UpdateOrderPaid } from "../types/index";
 
 export default {
-  getAllProducts () {
-    return axios.get(`${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/products/all`)
+  getAllProducts() {
+    return axios.get(`${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/products/all`);
   },
-  getProducts (page: number = 1) {
-    return axios.get(`${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/products/?page=${page}`)
+  getProducts(page = 1) {
+    return axios.get(
+      `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/products/?page=${page}`
+    );
   },
   addtoCart(data: AddToCart) {
     return axios.post(
       `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/cart&${qs.stringify(data)}`
     );
   },
-  delProduct (id: string) {
-    return axios.get(`${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/product/${id}`)
+  getCart() {
+    return axios.get(`${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart`);
   },
-  updateProduct (item: object, isNew: boolean) {
-    if (!isNew) {
-      return axios.put(`${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/product/${item.id}`)
-    } else {
-      return axios.post(`${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/product`)
-    }
+  delCart(id: string) {
+    return axios.get(`${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart/${id}`);
   },
-  getOrders (currentPage: number = 1) {
-    return axios.get(`${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/orders?page=${currentPage}`)
+  getOrders(currentPage = 1) {
+    return axios.get(
+      `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/orders?page=${currentPage}`
+    );
   },
   updateOrderPaid(data: UpdateOrderPaid) {
     return axios.post(
-      `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/order/${data.id}&${qs.stringify(data.is_paid)}`
+      `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/order/${
+        data.id
+      }&${qs.stringify(data.is_paid)}`
     );
   },
-  delOrder (id: string) {
-    return axios.delete(`${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/order/${id}`)
+  delOrder(id: string) {
+    return axios.delete(
+      `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/order/${id}`
+    );
   },
-  getCoupons () {
-    return axios.get(`${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/coupons`)
-  },
-  updateCoupon (item: object, isNew: boolean) {
+  updateProduct(item: object, isNew: boolean) {
     if (!isNew) {
-      return axios.put(`${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/coupon/${item.id}`)
+      // return axios.put(`${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/product/${item.id}`)
     } else {
-      return axios.post(`${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/coupon`)
+      return axios.post(`${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/product`);
     }
   },
-  delCoupon (id: string) {
-    return axios.delete(`${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/coupon/${id}`)
+  getCoupons() {
+    return axios.get(`${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/coupons`);
+  },
+  updateCoupon(item: object, isNew: boolean) {
+    if (!isNew) {
+      // return axios.put(`${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/coupon/${item.id}`)
+    } else {
+      return axios.post(`${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/coupon`);
+    }
+  },
+  delCoupon(id: string) {
+    return axios.delete(
+      `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/coupon/${id}`
+    );
   },
 };
-

@@ -7,22 +7,22 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted } from "vue"
+import { onMounted } from "vue";
 
 onMounted(() => {
   window.onscroll = (event: any) => {
-    const el = document.querySelector(".gotop")
+    const el = document.querySelector(".gotop");
     if (el !== null) {
       if (event.target.scrollingElement.scrollTop > 250) {
-        el.className = "gotop d-block"
+        el.className = "gotop d-block";
       } else {
-        el.className = "gotop d-none"
+        el.className = "gotop d-none";
       }
     }
-  }
-})
+  };
+});
 function top() {
-  document.documentElement.scrollTop = 0
+  document.documentElement.scrollTop = 0;
 }
 </script>
 

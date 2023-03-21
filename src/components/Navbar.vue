@@ -15,15 +15,15 @@
           </div>
           <div class="dropdown cart">
             <a
+              id="dropdownMenuLink"
               class="btn d-flex"
               href="#"
               role="button"
-              id="dropdownMenuLink"
               data-bs-toggle="dropdown"
               aria-expanded="false"
             >
               <span class="material-icons cart-icon"><i class="fas fa-shopping-cart"></i></span>
-              <div class="cart-num" v-if="cart?.carts?.length !== 0">
+              <div v-if="cart?.carts?.length !== 0" class="cart-num">
                 {{ cart?.carts?.length }}
               </div>
             </a>
@@ -50,10 +50,10 @@
                   </tr>
                   <tr class="bg-white text-end">
                     <td colspan="3">
-                      <span class="text-center w-100 d-block" v-if="cart?.carts?.length === 0">
+                      <span v-if="cart?.carts?.length === 0" class="text-center w-100 d-block">
                         趕快放入喜歡的商品吧!
                       </span>
-                      <span class="d-flex justify-content-end align-items-center" v-else>
+                      <span v-else class="d-flex justify-content-end align-items-center">
                         總計: $
                         <span class="price-dlr material-icons"></span>
                         {{ $filters.currency(cart.total) }}
@@ -63,13 +63,13 @@
                 </tbody>
               </table>
               <router-link
+                v-if="cart?.carts?.length === 0"
                 class="btn btn-secondary w-100"
                 to="/products"
-                v-if="cart?.carts?.length === 0"
               >
                 購物去
               </router-link>
-              <router-link class="btn btn-secondary btn-hover w-100" to="/cart" v-else>
+              <router-link v-else class="btn btn-secondary btn-hover w-100" to="/cart">
                 查看購物車
               </router-link>
             </div>
@@ -87,8 +87,8 @@
           <span class="material-icons menu-icon"> menu </span>
         </button>
         <div
-          class="collapse navbar-collapse order-lg-1 justify-content-end text-start"
           id="navbarNav"
+          class="collapse navbar-collapse order-lg-1 justify-content-end text-start"
         >
           <ul class="navbar-nav">
             <li class="nav-item">
@@ -114,54 +114,58 @@
 </template>
 
 <script setup lang="ts">
-import { reactive, onMounted, computed } from "vue"
-import { useRouter } from "vue-router"
+import { reactive } from "vue";
+import { useRouter } from "vue-router";
 
-const $router = useRouter()
+const $router = useRouter();
 const state = reactive({
   isLoading: false,
   cart: {
     carts: [],
   },
-})
+  user: {
+    username: "",
+    password: "",
+  },
+});
 
 function logout() {
-  const api = `${process.env.VUE_APP_API}logout`
-  $http.post(api, user).then((res) => {
-    if (res.data.success) {
-      $router.push("/login")
+  const api = `${process.env.VUE_APP_API}logout`;
+  $http.post(api, state.user).then((response: any) => {
+    if (response.data.success) {
+      $router.push("/login");
     }
-  })
+  });
 }
 function getCart() {
-  const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart`
-  isLoading = true
-  $http.get(api).then((response) => {
+  const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart`;
+  state.isLoading = true;
+  $http.get(api).then((response: any) => {
     if (response.data.success) {
-      cart = response.data.data
-      isLoading = false
+      state.cart = response.data.data;
+      state.isLoading = false;
     }
-  })
+  });
 }
-function delCart(id) {
-  const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart/${id}`
-  isLoading = true
-  $http.delete(api).then((response) => {
+function delCart(id: string) {
+  const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart/${id}`;
+  state.isLoading = true;
+  $http.delete(api).then((response: any) => {
     if (response.data.success) {
-      emitter.emit("message:push", { message: response.data.message, status: "danger" })
-      getCart()
-      isLoading = false
+      // emitter.emit("message:push", { message: response.data.message, status: "danger" })
+      getCart();
+      // state.isLoading = false
     } else {
-      emitter.emit("message:push", { message: response.data.message, status: "danger" })
-      isLoading = false
+      // emitter.emit("message:push", { message: response.data.message, status: "danger" })
+      // state.isLoading = false
     }
-  })
+  });
 }
 function goCart() {
-  $router.push("/cart")
+  $router.push("/cart");
 }
 function goProducts() {
-  $router.push("/products/all")
+  $router.push("/products/all");
 }
 
 // watch: {

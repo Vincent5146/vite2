@@ -1,10 +1,17 @@
-import { createApp } from "vue"
-import { createPinia } from "pinia"
+import { createApp } from "vue";
+import { createPinia } from "pinia";
 
-import App from "./App.vue"
-import router from "./router/index"
+import App from "./App.vue";
+import router from "./router/index";
 import "./style/main.scss";
 
-const app = createApp(App)
+import { currency, date } from "./methods/filters";
 
-app.use(router).use(createPinia()).mount("#app")
+const app = createApp(App);
+
+app.config.globalProperties.$filters = {
+  currency,
+  date,
+};
+
+app.use(router).use(createPinia()).mount("#app");

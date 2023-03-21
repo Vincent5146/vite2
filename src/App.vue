@@ -1,6 +1,6 @@
 <script setup lang="ts">
 // import Alert from '../components/AlertToastMessage.vue'
-import GoTop from "./components/GoTop.vue"
+import GoTop from "./components/GoTop.vue";
 </script>
 
 <template>

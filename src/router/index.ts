@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router"
+import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
 
 const routes: RouteRecordRaw[] = [
   {
@@ -6,16 +6,16 @@ const routes: RouteRecordRaw[] = [
     component: () => import("../views/index.vue"),
     children: [
       {
-        path: '/',
-        component: () => import('../views/user/Home.vue')
+        path: "/",
+        component: () => import("../views/user/Home.vue"),
       },
-    ]
+    ],
   },
-]
+];
 
 const router = createRouter({
   history: createWebHistory(),
   routes,
-})
+});
 
-export default router
+export default router;

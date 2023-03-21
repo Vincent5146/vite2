@@ -3,6 +3,6 @@ export interface AddToCart {
   qty: number;
 }
 export interface UpdateOrderPaid {
-  is_paid: boolean,
-  id: string,
+  is_paid: boolean;
+  id: string;
 }

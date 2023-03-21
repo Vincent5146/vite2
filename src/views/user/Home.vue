@@ -2,7 +2,9 @@
   <div class="banner">
     <div class="banner-txtbox">
       <h2>綿綿寵物旅館</h2>
-      <router-link to="/user/boarding" class="btn btn-dark btn-hover rounded-0">了解更多</router-link>
+      <router-link to="/user/boarding" class="btn btn-dark btn-hover rounded-0"
+        >了解更多</router-link
+      >
     </div>
   </div>
 
@@ -30,7 +32,8 @@
               <div class="card-body">
                 <h3 class="card-title fw-bold">24H 褓母照顧</h3>
                 <p class="card-text text-left">
-                  24 小時專業褓母駐館照顧，褓母個別觀察寵物身心理需求，給予每隻寵物個別化、最適切的空間、照顧和作息安排。
+                  24
+                  小時專業褓母駐館照顧，褓母個別觀察寵物身心理需求，給予每隻寵物個別化、最適切的空間、照顧和作息安排。
                 </p>
               </div>
             </div>
@@ -51,9 +54,7 @@
 
       <section class="section-2" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="200">
         <div class="section-title">
-          <h2>
-            <span>綿綿也能</span>幫助您解決困擾
-          </h2>
+          <h2><span>綿綿也能</span>幫助您解決困擾</h2>
         </div>
         <div class="features" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="500">
           <div class="features-img-coaching"></div>
@@ -76,18 +77,12 @@
             <div class="features-icon"></div>
             <h3>安親前須知</h3>
             <div>
-              <p>
-                以小時計費，沒有最低時數限制。連假期間不提供安親服務。
-              </p>
-              <p>
-                長期安親照護請預約時間帶狗狗來店洽詢。
-              </p>
+              <p>以小時計費，沒有最低時數限制。連假期間不提供安親服務。</p>
+              <p>長期安親照護請預約時間帶狗狗來店洽詢。</p>
             </div>
             <div class="mybtn">
               <a class="mybtn-link" href="tel:+02-24123456">
-                <span>
-                  來電洽詢
-                </span>
+                <span> 來電洽詢 </span>
               </a>
             </div>
           </div>
@@ -103,40 +98,37 @@
             <div class="blog-item">
               <div class="blog-pic">
                 <a target="_blank" href="https://pets.ettoday.net/news/2142169">
-                  <img src="@/assets/images/home-blog1.jpg" class="card-img-top" alt="寵物窩">
+                  <img src="@/assets/images/home-blog1.jpg" class="card-img-top" alt="寵物窩" />
                 </a>
               </div>
               <div class="blog-txt">
                 <h3 class="blog-txt-title">寵物窩「一個用到底」埋健康危機！</h3>
-                <p class="blog-txt-des">
-                  貓狗床窩要定期清潔，更要記得定期更換
-                </p>
+                <p class="blog-txt-des">貓狗床窩要定期清潔，更要記得定期更換</p>
               </div>
             </div>
             <div class="blog-item">
               <div class="blog-pic">
-                <a target="_blank" href="https://www.abibpet.com/blog/%E3%80%90%E4%B8%BB%E4%BA%BA%E4%B8%8D%E5%8F%AF%E4%B8%8D%E7%9F%A5%EF%BC%8F%E7%8B%97%E7%8B%97%E8%88%94%E8%88%94%E8%88%94-%E6%83%B3%E8%A6%81%E5%91%8A%E8%A8%B4%E4%BD%A0%E4%BB%80%E9%BA%BC%E4%BA%8B%E5%97%8E%E3%80%91">
-                  <img src="@/assets/images/home-blog2.jpg" class="card-img-top" alt="舔舔舔">
+                <a
+                  target="_blank"
+                  href="https://www.abibpet.com/blog/%E3%80%90%E4%B8%BB%E4%BA%BA%E4%B8%8D%E5%8F%AF%E4%B8%8D%E7%9F%A5%EF%BC%8F%E7%8B%97%E7%8B%97%E8%88%94%E8%88%94%E8%88%94-%E6%83%B3%E8%A6%81%E5%91%8A%E8%A8%B4%E4%BD%A0%E4%BB%80%E9%BA%BC%E4%BA%8B%E5%97%8E%E3%80%91"
+                >
+                  <img src="@/assets/images/home-blog2.jpg" class="card-img-top" alt="舔舔舔" />
                 </a>
               </div>
               <div class="blog-txt">
                 <h3 class="blog-txt-title">主人不可不知</h3>
-                <p class="blog-txt-des">
-                  毛孩舔舔舔，有代表什麼意思呢？
-                </p>
+                <p class="blog-txt-des">毛孩舔舔舔，有代表什麼意思呢？</p>
               </div>
             </div>
             <div class="blog-item">
               <div class="blog-pic">
                 <a target="_blank" href="https://www.businessweekly.com.tw/style/blog/8524">
-                  <img src="@/assets/images/home-blog3.jpg" class="card-img-top" alt="訓練">
+                  <img src="@/assets/images/home-blog3.jpg" class="card-img-top" alt="訓練" />
                 </a>
               </div>
               <div class="blog-txt">
                 <h3 class="blog-txt-title">教你訓練狗狗</h3>
-                <p class="blog-txt-des">
-                  關鍵在於主人的教導方法喔！
-                </p>
+                <p class="blog-txt-des">關鍵在於主人的教導方法喔！</p>
               </div>
             </div>
           </div>
