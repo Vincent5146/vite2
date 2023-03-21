@@ -11,13 +11,6 @@ export default defineConfig({
       "@": path.resolve(__dirname, "src"),
     },
   },
-  // css: {
-  //   preprocessorOptions: {
-  //     scss: {
-  //       additionalData: '@import "@/assets/style/main.scss";',
-  //     },
-  //   },
-  // },
   //啟動配置
   server: {
     host: "0.0.0.0",
