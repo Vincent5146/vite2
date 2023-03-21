@@ -8,7 +8,7 @@ export const useCartStore = defineStore("cart", {
       orders: {},
       tempOrder: {},
       pagination: {},
-      currentPage: 1
+      currentPage: 1,
     };
   },
   getters: {},
@@ -17,7 +17,7 @@ export const useCartStore = defineStore("cart", {
       try {
         const { data: response } = await $api.getOrders(currentPage);
         this.orders = response.data.orders;
-        this.pagination = response.data.pagination
+        this.pagination = response.data.pagination;
       } catch (e) {
         console.log(e);
       }
@@ -26,7 +26,7 @@ export const useCartStore = defineStore("cart", {
       try {
         const { data: response } = await $api.updateOrderPaid(data);
         if (response.data.success) {
-          this.getOrders(this.currentPage)
+          this.getOrders(this.currentPage);
         }
       } catch (e) {
         console.log(e);
@@ -40,26 +40,6 @@ export const useCartStore = defineStore("cart", {
       } catch (e) {
         console.log(e);
       }
-    },
-    async getAllProducts() {
-      try {
-        const { data: response } = await $api.getAllProducts();
-        if (response.data.success) {
-          this.products = response.data.products;
-        }
-      } catch (e) {
-        console.log(e);
-      }
-    },
-    async getProducts(page: number) {
-      try {
-        const { data: response } = await $api.getProducts(page);
-        if (response.data.success) {
-          this.products = response.data.products;
-        }
-      } catch (e) {
-        console.log(e);
-      }
-    },
+    }
   },
 });
