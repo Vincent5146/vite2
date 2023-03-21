@@ -1,5 +1,6 @@
 import { createApp } from "vue";
 import { createPinia } from "pinia";
+import { Toast } from 'vant';
 
 import App from "./App.vue";
 import router from "./router/index";
@@ -14,4 +15,4 @@ app.config.globalProperties.$filters = {
   date,
 };
 
-app.use(router).use(createPinia()).mount("#app");
+app.use(router).use(createPinia()).use(Toast).mount("#app");
