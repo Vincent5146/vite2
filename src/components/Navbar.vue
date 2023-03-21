@@ -114,15 +114,15 @@
 </template>
 
 <script setup lang="ts">
-import { reactive } from "vue";
+import { reactive, watch, onMounted } from "vue";
 import { useRouter } from "vue-router";
+import { useCartStore } from "../store/cart";
 
+const store = useCartStore();
 const $router = useRouter();
 const state = reactive({
   isLoading: false,
-  cart: {
-    carts: [],
-  },
+  cart: store.cart,
   user: {
     username: "",
     password: "",
@@ -138,28 +138,14 @@ function logout() {
   });
 }
 function getCart() {
-  const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart`;
   state.isLoading = true;
-  $http.get(api).then((response: any) => {
-    if (response.data.success) {
-      state.cart = response.data.data;
-      state.isLoading = false;
-    }
-  });
+  store.getCart();
+  state.isLoading = false;
 }
 function delCart(id: string) {
-  const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart/${id}`;
   state.isLoading = true;
-  $http.delete(api).then((response: any) => {
-    if (response.data.success) {
-      // emitter.emit("message:push", { message: response.data.message, status: "danger" })
-      getCart();
-      // state.isLoading = false
-    } else {
-      // emitter.emit("message:push", { message: response.data.message, status: "danger" })
-      // state.isLoading = false
-    }
-  });
+  store.delCart(id);
+  state.isLoading = false;
 }
 function goCart() {
   $router.push("/cart");
@@ -167,15 +153,16 @@ function goCart() {
 function goProducts() {
   $router.push("/products/all");
 }
-
-// watch: {
-//     // 轉址時nav選單隱藏
-//     $route() {
-//       document.querySelector("#navbarNav").classList.remove("show")
-//     },
-//   },
-// created() {
-//     this.getCart()
-//     this.emitter.on("resetCart", this.getCart)
-//   },
+//todo
+// watch(
+// () => $router.change,
+// (val) => {
+//   document.querySelector("#navbarNav").classList.remove("show");
+// }
+// );
+onMounted(() => {
+  getCart();
+  //toast
+  //     this.emitter.on("resetCart", this.getCart)
+});
 </script>

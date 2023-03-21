@@ -1,6 +1,6 @@
 import axios from "axios";
 import qs from "qs";
-import { AddToCart, UpdateOrderPaid } from "../types/index";
+import { AddToCart, UpdateOrderPaid, UpdateCart } from "../types/index";
 
 export default {
   getAllProducts() {
@@ -39,9 +39,9 @@ export default {
       `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/order/${id}`
     );
   },
-  updateProduct(item: object, isNew: boolean) {
+  updateProduct(data: UpdateCart, isNew: boolean) {
     if (!isNew) {
-      // return axios.put(`${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/product/${item.id}`)
+      return axios.put(`${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/product/${data.product_id}`)
     } else {
       return axios.post(`${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/product`);
     }
@@ -49,9 +49,10 @@ export default {
   getCoupons() {
     return axios.get(`${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/coupons`);
   },
-  updateCoupon(item: object, isNew: boolean) {
+  // todo 型別沒改
+  updateCoupon(data: UpdateCart, isNew: boolean) {
     if (!isNew) {
-      // return axios.put(`${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/coupon/${item.id}`)
+      return axios.put(`${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/coupon/${data.product_id}`)
     } else {
       return axios.post(`${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/coupon`);
     }
